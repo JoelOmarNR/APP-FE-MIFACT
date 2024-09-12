@@ -1,0 +1,95 @@
+<section>
+  <div id="page-main" class="d-flex">
+    <div id="img-fondo"></div>
+    <div id="form-login">
+      <form
+        (ngSubmit)="login(formulario)"
+        #formulario="ngForm"
+        autocomplete="off"
+      >
+        <div class="d-flex justify-content-center">
+          <!--<img class="mb-4" src="{{baseHref}}assets/image/galaxy-training-logo.png" alt="" height="77">-->
+          <img
+            class="mb-4"
+            src="https://trabajosdiarios.com/storage/logo/pe/INRO/76XNvAFdUPgvz84DSFEwFlaDdhF6wqDmxrDfz0Fp.png"
+            alt=""
+            height="77"
+          />
+        </div>
+
+        <div class="form-floating mb-3">
+          <p-inputText
+            id="email"
+            placeholder="Email"
+            name="email"
+            [(ngModel)]="credentials.username"
+            required
+            pInputText
+            type="email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            #email="ngModel"
+          ></p-inputText>
+          <label for="email">Email</label>
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="invalid-feedback"
+          >
+            <ng-container *ngIf="email.hasError('required')">
+              Este campo es obligatorio
+            </ng-container>
+            <ng-container *ngIf="email.hasError('pattern')">
+              Ingrese un email válido
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="form-floating mb-3 position-relative">
+          <p-password
+            id="password"
+            placeholder="Contraseña"
+            name="password"
+            [(ngModel)]="credentials.password"
+            required
+            #password="ngModel"
+            [toggleMask]="true"
+            [feedback]="false"
+          ></p-password>
+          <label for="password">Contraseña</label>
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="invalid-feedback"
+          >
+            <ng-container *ngIf="password.hasError('required')">
+              Este campo es obligatorio
+            </ng-container>
+          </div>
+        </div>
+        <br />
+
+        <p-button
+          label="Iniciar sesión"
+          type="submit"
+          class="w-100 mb-3"
+        ></p-button>
+
+        <!-- Uncomment if needed
+        <p-button
+          label="Registrarme"
+          routerLink="/registro"
+          class="w-100"
+          [styleClass]="'btn-secondary'"
+        ></p-button>
+        -->
+
+        <p class="mt-5 mb-3 text-muted">
+          &copy; 2024 - Aplicación web desarrollado por <br /><a
+            href="https://github.com/JoelOmarNR/"
+            class="url-link"
+            target="_blank"
+            >JoelOmarDev</a
+          >
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
